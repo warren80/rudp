@@ -7,7 +7,7 @@
 
 /* this initialises a node, allocates memory for the node, and returns   */
 /* a pointer to the new node. Must pass it the node details, seq          */
-PNODE initnode(char * data, int seq) {
+PNODE nodeInit(char * data, int seq) {
    PNODE ptr;
    ptr = (PNODE) calloc( 1, sizeof(NODE));
    if(ptr == NULL) {
@@ -22,14 +22,14 @@ PNODE initnode(char * data, int seq) {
 
 /* this adds a node to the end of the list. You must allocate a node and  */
 /* then pass its address to this function                                 */
-void add(PNODE end, PNODE ptr) {
+void listAdd(PNODE end, PNODE ptr) {
    end->next = ptr;
 }
 
 /* deletes the specified node pointed to by 'ptr' only to be used when
    deleting a node in middle of list.  To delete from start of list used
    deleteuntil */
-void deletenode(PNODE prev, PNODE ptr) {
+void nodeDelete(PNODE prev, PNODE ptr) {
     if (ptr->next == NULL) {
         prev->next = NULL;
     } else {
@@ -41,7 +41,7 @@ void deletenode(PNODE prev, PNODE ptr) {
 
 /* this deletes all nodes from the place specified by ptr                 */
 /* if you pass it head, it will free up entire list                       */
-void deletelist(PNODE ptr) {
+void listDelete(PNODE ptr) {
     PNODE temp;
     if (ptr == NULL) {
         return;
@@ -54,7 +54,7 @@ void deletelist(PNODE ptr) {
     } while (ptr != NULL);
 }
 
-PNODE deleteuntil(PNODE ptr, int seq) {
+PNODE listDeleteUntil(PNODE ptr, int seq) {
     PNODE temp;
     //check for wrapping
     do {

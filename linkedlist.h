@@ -8,9 +8,9 @@ struct node {
 };
 typedef struct node NODE, *PNODE;
 
-PNODE initnode(char * data, int seq);
-void deletenode(PNODE prev, PNODE ptr);
-void deletelist(PNODE ptr);
-PNODE deleteuntil(PNODE ptr, int seq);
-void add(PNODE end, PNODE ptr);
+PNODE nodeInit(char * data, int seq);
+void nodeDelete(PNODE prev, PNODE ptr);
+void listDelete(PNODE ptr);
+PNODE listDeleteUntil(PNODE ptr, int seq);
+void listAdd(PNODE end, PNODE ptr);
 #endif
