@@ -34,7 +34,7 @@ PCONNECT startConnection(char *ip, int16_t port) {
     int i = 1;
     connection->sock = socket(AF_INET, SOCK_DGRAM, 0);
     if (setsockopt(connection->sock, SOL_SOCKET, SO_REUSEADDR, &i, sizeof i) < 0) {
-              perror("setsockopt(SO_REUSEADDR) failed");
+              error("setsockopt(SO_REUSEADDR) failed");
     }
     if (connection->sock == 0) {
         error("ERROR on creating socket");
@@ -104,13 +104,13 @@ int rxPacket(PCONNECT connection) {
 
 
 PNODE createlist() {
-    PNODE head = initnode(malloc(1),0);
+    PNODE head = nodeInit(malloc(1),0);
     PNODE temp = head, pnode;
     int i;
     for(i = 1; i != 3; ++i) {
         char * data = (char *) calloc(3,55555);
-        pnode = initnode(data,i);
-        add(temp, pnode);
+        pnode = nodeInit(data,i);
+        listAdd(temp, pnode);
         temp = pnode;
         //printf("createlist: %d\n", i);
     }
