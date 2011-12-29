@@ -1,11 +1,11 @@
 CC=gcc
 CFLAGS=-Wall
 
-server: rudp.o mainserver.o linkedlist.o connection.o crc.o
-	$(CC) -o s.out rudp.o mainserver.o linkedlist.o connection.o crc.o
+server: rudp.o mainserver.o linkedlist.o connection.o crc.o clients.o
+	$(CC) -o s.out rudp.o mainserver.o linkedlist.o connection.o crc.o clients.o
 	rm -f *.o
-client: rudp.o mainclient.o linkedlist.o connection.o crc.o
-	$(CC) -o c.out rudp.o mainclient.o linkedlist.o connection.o crc.o
+client: rudp.o mainclient.o linkedlist.o connection.o crc.o clients.o
+	$(CC) -o c.out rudp.o mainclient.o linkedlist.o connection.o crc.o clients.o
 	rm -f *.o
 clean:
 	rm -f *.o
@@ -26,4 +26,6 @@ connection.o:
 	$(CC) $(CFLAGS) -o connection.o -c connection.c
 crc.o:
 	$(CC) $(CFLAGS) -o crc.o -c crc.c
+clients.o:
+	$(CC) $(CFLAGS) -o clients.o -c clients.c
 

@@ -4,6 +4,7 @@ int rudpServer(int16_t port) {
     crcInit();
     printf("rudpServer:\n");
     PCONNECT connection = startConnection(0, port);
+
     printf("Server started\n");
     rxPacket(connection);
     return 0;

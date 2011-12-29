@@ -36,6 +36,7 @@ void error(const char *msg);
 PCONNECT startConnection(char *ip, int16_t port);
 int rxPacket(PCONNECT connection);
 int txPacket(PCONNECT connection, PNODE head);
+PNODE createlist();
 
 
 #endif
