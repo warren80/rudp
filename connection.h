@@ -13,6 +13,8 @@
 #include <netinet/in.h>
 #include <arpa/inet.h>
 #include "crc.h"
+#include "uthash.h"
+
 
 #define PORTNO 7000
 #define MAXBUFFER 255
@@ -27,6 +29,7 @@ typedef struct {
     struct sockaddr_in addrOut;
     char status;
     struct node *head;
+    UT_hash_handle hh;
 } CONNECT, *PCONNECT;
 
 void error(const char *msg);
